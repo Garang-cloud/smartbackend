@@ -8,7 +8,7 @@ const bcrypt = require('bcryptjs'); // NEW: Import bcryptjs
 require('dotenv').config(); // NEW: Load environment variables from .env file
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5050;
 
 // NEW: MongoDB Connection URI (Get this from local MongoDB or MongoDB Atlas)
 // It tries to read from MONGO_URI environment variable, falls back to local if not set.
@@ -306,6 +306,10 @@ setInterval(fetchWeatherData, 10 * 60 * 1000);
 // API endpoint to serve the latest weather data to the frontend
 app.get('/api/weather/latest', (req, res) => {
     res.json(latestWeatherData);
+});
+
+app.get('/', (req, res) => {
+    res.send('Welcome to The Smart Irrigation Backend API! Use the endpoints to interact with sensor data and commands.');
 });
 
 
